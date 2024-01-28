@@ -1,0 +1,161 @@
+{% extends "crm_jobs/base.html" %}
+{% load custom_tags %}
+{% block location %}
+    Deleting Existing Client
+{% endblock %}
+{% block sub %}
+    <div class="sub-nav">
+        <button class="main-btn">Actions</button>
+        <div class="drop-menu">
+            <a href="{% url "client-detail" clients.id %}">Cancel</a>
+            <hr class="hr-sub-menu">
+            <form method="post" id="client-form">
+                {% csrf_token %}
+                <button form="client-form">Delete Client</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="alert-msg neg-bg">
+        <span class="material-symbols-outlined">info</span>
+        <span>Deleting this client will also delete associated inspections.</span>
+    </div>
+    <hr>
+<table>
+        <tr>
+            <th colspan="2">Basic Information</th>
+        </tr>
+        <tr>
+            <th class="th-25">First Name</th>
+            <td>{{ clients.first_name|capfirst }}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{ clients.last_name|capfirst|if_none }}</td>
+        </tr>
+        <tr>
+            <th>Date Added</th>
+            <td>{{ clients.date_added }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            {% if clients.status == "ACTIVE" %}
+                <td class="pos-bg">Active</td>
+            {% else %}
+                <td class="neg-bg">Inactive</td>
+            {% endif %}
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <th colspan="2">Contact Information</th>
+        </tr>
+        <tr>
+            <th class="th-25">Telephone</th>
+            <td>{{ clients.telephone|if_none }}</td>
+        </tr>
+
+        <tr>
+            <th>Telephone Alt</th>
+            <td>{{ clients.telephone_alt|if_none }}</td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td>{{ clients.email|lower|if_none }}</td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <th colspan="2">Business Information</th>
+        </tr>
+        <tr>
+            <th class="th-25">Position</th>
+            <td>{{ clients.position|capfirst|if_none }}</td>
+        </tr>
+        <tr>
+            <th>Business</th>
+            <td>{{ clients.business_name|capfirst|if_none }}</td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <th colspan="2">Address Information</th>
+        </tr>
+        <tr>
+            <th class="th-25">Address Line 1</th>
+            <td>{{ clients.address_line_1|capfirst|if_none }}</td>
+        </tr>
+        <tr>
+            <th>Address Line 2</th>
+            <td>{{ clients.address_line_2|capfirst|if_none }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ clients.city|capfirst|if_none }}</td>
+        </tr>
+        <tr>
+            <th>Postcode</th>
+            <td>{{ clients.postcode|upper|if_none }}</td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <th>Client Notes</th>
+        </tr>
+        <tr>
+            {% if clients.notes %}
+                <td class="align-left">
+                    {{ clients.notes|linebreaksbr }}
+                </td>
+            {% else %}
+                <td>
+                    There are no client notes.
+                </td>
+            {% endif %}
+        </tr>
+    </table>
+    <hr>
+    <table class="table-layout-fixed">
+        <tr>
+            <th colspan="3">Associated Inspections</th>
+        </tr>
+        {% if clients.inspections_set.values %}
+            <tr>
+                <th>Date</th>
+                <th>Completed</th>
+                <th>Paid</th>
+            </tr>
+            {% for inspection in clients.inspections_set.values %}
+                <tr>
+                    <td>
+                        <a href="{% url "inspection-detail" inspection.id %}">
+                            {{ inspection.date }}
+                        </a>
+                    </td>
+                    {% if inspection.completed == "YES" %}
+                        <td class="pos-bg">✔</td>
+                    {% else %}
+                        <td class="neg-bg">✘</td>
+                    {% endif %}
+                    {% if inspection.paid == "YES" %}
+                        <td class="pos-bg">✔</td>
+                    {% else %}
+                        <td class="neg-bg">✘</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">
+                    <span>There are no associated inspections.</span>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+{% endblock %}

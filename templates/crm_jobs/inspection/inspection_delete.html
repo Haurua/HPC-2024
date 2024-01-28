@@ -1,0 +1,121 @@
+{% extends "crm_jobs/base.html" %}
+{% load custom_tags %}
+{% block location %}
+    Deleting Existing Inspection
+{% endblock %}
+{% block sub %}
+    <div class="sub-nav">
+        <button class="main-btn">Actions</button>
+        <div class="drop-menu">
+            <a href="{% url "inspection-detail" inspections.id %}">Cancel</a>
+            <hr class="hr-sub-menu">
+            <form method="post" id="inspection-form">
+                {% csrf_token %}
+                <button form="inspection-form">Delete Inspection</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="alert-msg neg-bg">
+        <span class="material-symbols-outlined">info</span>
+        <span>Deleting this inspection is permanent.</span>
+    </div>
+    <hr>
+    <table>
+        <tr>
+            <th colspan="2">Client Information</th>
+        </tr>
+        <tr>
+            <th class="th-20">Name</th>
+            <td>{{ inspections.client.first_name|capfirst }} {{ inspections.client.last_name|capfirst }}</td>
+        </tr>
+        {% if inspections.client.business_name %}
+            <tr>
+                <th>Business</th>
+                <td>{{ inspections.client.business_name|capfirst }}</td>
+            </tr>
+        {% endif %}
+        {% if inspections.client.telephone %}
+            <tr>
+                <th>Telephone</th>
+                <td>{{ inspections.client.telephone }}</td>
+            </tr>
+        {% endif %}
+        {% if inspections.client.telephone_alt %}
+            <tr>
+                <th>Telephone</th>
+                <td>{{ inspections.client.telephone }}</td>
+            </tr>
+        {% endif %}
+        {% if inspections.client.email %}
+            <tr>
+                <th>Email</th>
+                <td>{{ inspections.client.email|lower }}</td>
+            </tr>
+        {% endif %}
+        {% if inspections.client.postcode %}
+            <tr>
+                <th>Address</th>
+                <td>
+                    {% if inspections.client.address_line_1 %}
+                        {{ inspections.client.address_line_1|capfirst }}<br/>
+                    {% endif %}
+                    {% if inspections.client.address_line_2 %}
+                        {{ inspections.client.address_line_2|capfirst }}<br/>
+                    {% endif %}
+                    {{ inspections.client.postcode|if_none|upper }}
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <th colspan="2">Inspection Information</th>
+        </tr>
+        <tr>
+            <th class="th-20">Date</th>
+            <td>{{ inspections.date }}</td>
+        </tr>
+        <tr>
+            <th>Fee</th>
+            <td>{{ inspections.fee|if_none|if_fee }}</td>
+        </tr>
+        <tr>
+            <th>Completed</th>
+            {% if inspections.completed == "NO" %}
+                <td class="neg-bg">✘</td>
+            {% else %}
+                <td class="pos-bg">✔</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <th>Paid</th>
+            {% if inspections.paid == "NO" %}
+                <td class="neg-bg">✘</td>
+            {% else %}
+                <td class="pos-bg">✔</td>
+            {% endif %}
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <th>Job Notes</th>
+        </tr>
+        {% if inspections.notes %}
+            <tr>
+                <td class="align-left">
+                    {{ inspections.notes|linebreaksbr }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td>
+                    <span>There are no job notes.</span>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+{% endblock %}

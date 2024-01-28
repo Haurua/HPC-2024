@@ -1,0 +1,58 @@
+{% extends "crm_jobs/base.html" %}
+{% load custom_tags %}
+{% block location %}
+    Inspection List
+{% endblock %}
+{% block content %}
+     {% if messages %}
+        {% for message in messages %}
+            <div class="alert-msg pos-bg">
+                <span>{{ message }}</span>
+            </div>
+            <hr>
+        {% endfor %}
+    {% endif %}
+    <table>
+        <tr>
+            <th colspan="4">Inspection List</th>
+        </tr>
+        {% if inspections_list %}
+            <tr>
+                <th class="th-30">Name</th>
+                <th class="th-30">Date</th>
+                <th class="th-20">Completed</th>
+                <th class="th-20">Paid</th>
+            </tr>
+            {% for inspection in inspections_list %}
+                <tr>
+                    <td>
+                        <a href="{% url "client-detail" inspection.client.id %}">
+                            {{ inspection.client.first_name }} {{ inspection.client.last_name|truncatechars:15 }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url "inspection-detail" inspection.id %}">
+                            {{ inspection.date }}
+                        </a>
+                    </td>
+                    {% if inspection.completed == "NO" %}
+                        <td class="neg-bg">✘</td>
+                    {% else %}
+                        <td class="pos-bg">✔</td>
+                    {% endif %}
+                    {% if inspection.paid == "NO" %}
+                        <td class="neg-bg">✘</td>
+                    {% else %}
+                        <td class="pos-bg">✔</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>
+                    <span>There are currently no inspections.</span>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+{% endblock %}

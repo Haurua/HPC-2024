@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'crm_jobs/css/style.css' %}">
+    <script src="{% static "crm_jobs/js/script.js" %}"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hardy Pest Control - CRM</title>
+</head>
+<body>
+<div class="header-wrapper">
+    <header>
+        HPC - {% block location %}{% endblock %}
+        <form method="post" action="{% url 'logout' %}" id="logout-form">
+            {% csrf_token %}
+            <button type="button" onclick="logoutConfirm()">
+                Logout
+                <span title="Logout" class="material-symbols-outlined">logout</span>
+            </button>
+        </form>
+    </header>
+</div>
+<div class="nav-wrapper">
+    <nav>
+        <div>
+            <span title="Dashboard" class="material-symbols-outlined">
+                <a href="{% url "dashboard" %}">dashboard</a>
+            </span>
+            <span title="Clients" class="material-symbols-outlined">
+                <a href="{% url "client-list" %}">person</a>
+            </span>
+            <span title="Inspections" class="material-symbols-outlined">
+                <a href="{% url "inspection-list" %}">list_alt</a>
+            </span>
+        </div>
+        {% block sub %}
+        {% endblock %}
+    </nav>
+</div>
+<div class="main-wrapper">
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "auth_sys/base.html" %}
+{% load static %}
+{% block content %}
+    <section class="login-wrapper">
+        <img src="{% static "auth_sys/img/hpc_logo.png" %}" alt="HPC">
+        <hr class="hr-margin-10px">
+        <form method="post">
+            {% if form.errors %}
+                <div class="alert-msg neg-bg">
+                    <span class="material-symbols-outlined">info</span>
+                    Your credentials didn't match.
+                </div>
+            {% endif %}
+            {% csrf_token %}
+            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username"
+                   maxlength="150" required="" aria-invalid="true" id="id_username" placeholder="Username">
+            <input type="password" name="password" autocomplete="current-password" required="" aria-invalid="true"
+                   id="id_password" placeholder="Password">
+            <button type="submit" value="login">Login</button>
+        </form>
+    </section>
+{% endblock %}

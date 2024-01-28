@@ -1,0 +1,70 @@
+{% extends "crm_jobs/base.html" %}
+{% load custom_tags %}
+{% block location %}
+    {% if clients.notes %}
+        Updating Client Note
+    {% else %}
+        Creating Client Note
+    {% endif %}
+{% endblock %}
+{% block sub %}
+    <div class="sub-nav">
+        <button class="main-btn">Actions</button>
+        <div class="drop-menu">
+            <a href="{% url "client-detail" clients.id %}">Cancel</a>
+            <hr class="hr-sub-menu">
+            <button form="client-form">
+                    Save Note
+            </button>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <form method="post" id="client-form">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th colspan="2">Client Information</th>
+            </tr>
+            <tr>
+                <th class="th-25">First Name</th>
+                <td>{{ clients.first_name|capfirst }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ clients.last_name|capfirst|if_none }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                {% if clients.status == "ACTIVE" %}
+                    <td class="pos-bg">Active</td>
+                {% else %}
+                    <td class="neg-bg">Inactive</td>
+                {% endif %}
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th colspan="2">Business Information</th>
+            </tr>
+            <tr>
+                <th class="th-25">Position</th>
+                <td>{{ clients.position|capfirst|if_none }}</td>
+            </tr>
+            <tr>
+                <th>Business</th>
+                <td>{{ clients.business_name|capfirst|if_none }}</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th>Note</th>
+            </tr>
+            <tr>
+                <td>{{ form.notes }}</td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

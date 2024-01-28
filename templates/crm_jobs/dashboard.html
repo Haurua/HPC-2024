@@ -1,0 +1,108 @@
+{% extends "crm_jobs/base.html" %}
+{% load custom_tags %}
+{% block location %}
+    Dashboard
+{% endblock %}
+{% block content %}
+    <table class="table-layout-fixed">
+        <tr>
+            <th colspan="3">Upcoming Inspections</th>
+        </tr>
+        {% if inspections.upcoming %}
+            <tr>
+                <th>Client</th>
+                <th>Postcode</th>
+                <th>Date</th>
+            </tr>
+            {% for inspection in inspections.upcoming %}
+                <tr>
+                    <td>
+                        <a href="{% url "client-detail" inspection.client.id %}">
+                            {{ inspection.client.first_name }} {{ inspection.client.last_name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ inspection.client.postcode|if_none|upper }}
+                    </td>
+                    <td>
+                        <a href="{% url "inspection-detail" inspection.id %}">
+                            {{ inspection.date }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">There are no upcoming inspections.</td>
+            </tr>
+        {% endif %}
+    </table>
+    <hr>
+    <table class="table-layout-fixed">
+        <tr>
+            <th colspan="3">Overdue Inspections</th>
+        </tr>
+        {% if inspections.overdue %}
+            <tr>
+                <th>Client</th>
+                <th>Postcode</th>
+                <th>Date</th>
+            </tr>
+            {% for inspection in inspections.overdue %}
+                <tr>
+                    <td>
+                        <a href="{% url "client-detail" inspection.client.id %}">
+                            {{ inspection.client.first_name }} {{ inspection.client.last_name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ inspection.client.postcode|if_none|upper }}
+                    </td>
+                    <td>
+                        <a href="{% url "inspection-detail" inspection.id %}">
+                            {{ inspection.date }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">There are no overdue inspections.</td>
+            </tr>
+        {% endif %}
+    </table>
+    <hr>
+    <table class="table-layout-fixed">
+        <tr>
+            <th colspan="3">Completed Inspections</th>
+        </tr>
+        {% if inspections.complete %}
+            <tr>
+                <th>Client</th>
+                <th>Postcode</th>
+                <th>Date</th>
+            </tr>
+            {% for inspection in inspections.complete %}
+                <tr>
+                    <td>
+                        <a href="{% url "client-detail" inspection.client.id %}">
+                            {{ inspection.client.first_name }} {{ inspection.client.last_name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ inspection.client.postcode|if_none|upper }}
+                    </td>
+                    <td>
+                        <a href="{% url "inspection-detail" inspection.id %}">
+                            {{ inspection.date }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="3">There are no completed inspections.</td>
+            </tr>
+        {% endif %}
+    </table>
+{% endblock %}

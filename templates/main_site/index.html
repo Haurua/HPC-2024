@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main_site/css/style.css' %}">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hardy Pest Control</title>
+</head>
+<body>
+
+<header>
+    <div class="header-wrapper">
+        <div class="logo-container">
+            <span id="logo-1">Hardy</span>
+            <span id="logo-2">Pest Control</span>
+        </div>
+        <nav>
+            <a href="#about">
+                <span class="material-symbols-outlined">info</span>
+                About
+            </a>
+            <a href="#services">
+                <span class="material-symbols-outlined">linked_services</span>
+                Services
+            </a>
+            <a href="#contact-form">
+                <span class="material-symbols-outlined">alternate_email</span>
+                Contact
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero-sizing hero-1">
+        <div class="slogan-container">
+            <div id="slogan-1">Don't be pestered</div>
+            <div id="slogan-2">Covering London & Kent</div>
+        </div>
+    </section>
+
+
+    <div class="welcome-wrapper">
+        <section class="welcome">
+            <p class="align-center">HPC is your local pest control company, offering a broad and reliable range of pest
+                control
+                solutions and services in both residential and commercial properties.</p>
+        </section>
+    </div>
+
+    <div class="about-wrapper">
+        <section class="about" id="about">
+            <h1>About <span class="color-red">Hardy Pest Control</span></h1>
+            <p>We are passionate about making sure that your property is safe from any pests and infestation.</p>
+            <p>Being experts in pest management, we specialize in providing a wide range of maintenance and many other
+                services
+                for both residential and commercial properties.</p>
+            <p>Not in any way bound to our local area, we provide our services across all of London and Kent.</p>
+            <p>We offer free estimates and advice so give us a call or alternatively send us a message via the
+                contact-form
+                below.</p>
+        </section>
+    </div>
+
+    <section class="hero-sizing hero-2">
+        <div class="slogan-container">
+            <div id="slogan-3">No call-out charges</div>
+            <div id="slogan-3">Free no-obligation quotes</div>
+        </div>
+    </section>
+
+    <div class="services-wrapper">
+        <section class="services" id="services">
+            <h1>Our <span class="color-red">Services</span></h1>
+            <p>
+                Here at HPC, we aim to be fast, efficient and discreet. The solutions offered will always take
+                into account all relevant circumstances. There is no 'one size fits all'; each problem requires a unique
+                approach, and it is our goal to provide these.</p>
+            <p>We offer pest control management across all range of sectors, covering all of London and Kent, 24 hours a
+                day,
+                every day. Hardy will identify your pest control needs and provide appropriate treatments based on our
+                vast
+                knowledge and years of experience.</p>
+            <p>You will receive ongoing support until your pest infestation is successfully managed or eliminated
+                completely.</p>
+        </section>
+    </div>
+
+    <div class="covered-wrapper">
+        <section class="covered">
+            <div class="card">
+                <img src="{% static 'main_site/img/commercial.png' %}" alt="Commercial Building">
+                <div class="info-wrapper">
+                    <span class="material-symbols-outlined">corporate_fare</span>
+                    <h1>Commercial</h1>
+                    <p>Whether a restaurant, hotel or any other business, we have you covered.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'main_site/img/industrial.png' %}" alt="Industrial Building">
+                <div class="info-wrapper">
+                    <span class="material-symbols-outlined">warehouse</span>
+                    <h1>Industrial</h1>
+                    <p>Industrial buildings are susceptible to infestations of all kinds.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'main_site/img/residential.png' %}" alt="Residential Building">
+                <div class="info-wrapper">
+                    <span class="material-symbols-outlined">house</span>
+                    <h1>Residential</h1>
+                    <p>The last thing you want is to share your home with unwanted critters.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="common-wrapper">
+        <section class="common">
+            <h1>Common <span class="color-red">Pests</span></h1>
+            <details>
+                <summary>Rats</summary>
+                <img src="{% static 'main_site/img/service_rat.png' %}" alt="">
+                <p>Rats mark their territory by urinating everywhere they go, representing a significant public health
+                    risk.</p>
+            </details>
+            <details>
+                <summary>Mice</summary>
+                <img src="{% static 'main_site/img/service_mice.png' %}" alt="">
+                <p>As they scurry around, they carry dirt and bacteria, transferring it to your counter tops and
+                    cabinets.</p>
+            </details>
+            <details>
+                <summary>Ants</summary>
+                <img src="{% static 'main_site/img/service_ant.png' %}" alt="">
+                <p>Ants contaminate food, build unsightly mounds on properties and cause damage to wood and other
+                    materials
+                    for nesting.</p>
+            </details>
+            <details>
+                <summary>Cockroaches</summary>
+                <img src="{% static 'main_site/img/service_cockroach.png' %}" alt="">
+                <p>They are known to carry organisms which cause food poisoning in humans and many other bacteria, such
+                    as
+                    salmonella.</p>
+            </details>
+            <details>
+                <summary>Fleas</summary>
+                <img src="{% static 'main_site/img/service_flea.png' %}" alt="">
+                <p>Although fleas do not pose a direct health risk, flea bites can cause intense irritation and itching
+                    to
+                    pets and humans alike.</p>
+            </details>
+        </section>
+    </div>
+
+    <div class="peace-wrapper">
+        <section class="peace">
+            <h1>Peace of <span class="color-red">Mind</span></h1>
+            <p>Pest infestations can be threatening to your home/business and health. We offer swift and reliable pest
+                control solutions while remaining discreet in our approach.</p>
+            <p>Preventatives measures in addition to a more prompt approach will ensure that your property remains
+                pest-free.</p>
+        </section>
+    </div>
+</main>
+
+<div class="contact-form-wrapper">
+    <h1>Contact <span class="color-red">Hardy Pest Control</span></h1>
+    <section class="contact-form" id="contact-form">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <span>Name</span>
+                {{ form.name }}
+            </div>
+            <div>
+                <span>Telephone</span>
+                {{ form.telephone }}
+            </div>
+            <div>
+                <span>Email Address</span>
+                {{ form.email }}
+            </div>
+            <div>
+                <span>Postcode</span>
+                {{ form.postcode }}
+            </div>
+            <div>
+                <span>Property Type</span>
+                {{ form.property_type }}
+            </div>
+            <div>
+                <span>Description</span>
+                {{ form.description }}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        {% for message in messages %}
+            {% if "success" in message.tags %}
+                <div class="form-message-wrapper">
+                    <section class="form-message">
+                        <p>{{ message }}</p>
+                    </section>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+</div>
+
+<div class="footer-wrapper">
+    <footer>
+        <div>
+            <a href="tel:07881586992">
+                <span class="material-symbols-outlined">phone_iphone</span>
+                07881586992
+            </a>
+            <a href="mailto:hsezgin@hotmail.com">
+                <span class="material-symbols-outlined">alternate_email</span>
+                hsezgin@hotmail.com
+            </a>
+        </div>
+        <p>© 2024 Hardy Pest Patrol</p>
+    </footer>
+</div>
+
+</body>
+</html>

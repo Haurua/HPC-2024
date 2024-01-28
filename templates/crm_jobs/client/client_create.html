@@ -1,0 +1,92 @@
+{% extends "crm_jobs/base.html" %}
+{% load custom_tags %}
+{% block location %}
+    Creating New Client
+{% endblock %}
+{% block sub %}
+    <div class="sub-nav">
+        <button class="main-btn">Actions</button>
+        <div class="drop-menu">
+            <a href="{% url "client-list"%}">Cancel</a>
+            <hr class="hr-sub-menu">
+            <button form="client-form">Save Client</button>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <form method="post" id="client-form">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th colspan="2">Basic Information</th>
+            </tr>
+            <tr>
+                <th class="th-25">First Name</th>
+                <td>{{ form.first_name }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ form.last_name }}</td>
+            </tr>
+                        <tr>
+                <th>Status</th>
+                <td>{{ form.status }}</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th colspan="2">Contact Information</th>
+            </tr>
+            <tr>
+                <th class="th-25">Telephone</th>
+                <td>{{ form.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Telephone Alt</th>
+                <td>{{ form.telephone_alt }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ form.email }}</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th colspan="2">Business Information</th>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ form.position }}</td>
+            </tr>
+            <tr>
+                <th class="th-25">Business</th>
+                <td>{{ form.business_name }}</td>
+            </tr>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <th colspan="2">Address Information</th>
+            </tr>
+            <tr>
+                <th class="th-25">Address Line 1</th>
+                <td>{{ form.address_line_1 }}</td>
+            </tr>
+            <tr>
+                <th>Address Line 2</th>
+                <td>{{ form.address_line_2 }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ form.city }}</td>
+            </tr>
+            <tr>
+                <th>Postcode</th>
+                <td>{{ form.postcode }}</td>
+            </tr>
+        </table>
+    </form>
+    </form>
+{% endblock %}
