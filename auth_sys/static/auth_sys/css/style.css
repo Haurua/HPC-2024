@@ -1,0 +1,114 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Body */
+
+body {
+    background-color: #232323;
+    /**/
+    font-family: system-ui
+}
+
+/* Main */
+
+main {
+    margin: auto;
+    padding: 75px 5%;
+}
+
+/* Login */
+
+img {
+    display: block;
+    /**/
+    margin: auto;
+    /**/
+    width: 150px;
+}
+
+.login-wrapper {
+    max-width: 350px;
+    /**/
+    margin: auto;
+    padding: 15px;
+    /**/
+    background-color: #2a2e33;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form input {
+    box-sizing: border-box;
+    /**/
+    padding: 10px;
+    /**/
+    background-color: #e3e3e3;
+    outline: none;
+    /**/
+    text-align: center;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+input:focus {
+    box-sizing: border-box;
+    border: 2px solid #B32323;
+}
+
+form button {
+    all: unset;
+    cursor: pointer;
+    /**/
+    padding: 15px;
+    /**/
+    background-color: #B32323;
+    outline: none;
+    /**/
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    /**/
+    transition: .15s;
+}
+
+form button:hover {
+    background-color: #d03b3b;
+}
+
+/* Custom Classes **/
+
+.alert-msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    /**/
+    padding: 10px;
+    /**/
+    background-color: #d03b3b;
+    /**/
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+hr {
+    margin: 20px 0;
+}
